@@ -1,0 +1,28 @@
+﻿
+@{
+    ViewBag.Title = "Conservator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Welcome Conservator!</h1>
+
+<div>
+    <h4>View Artifacts</h4>
+    @Html.ActionLink("Artifact Index", "Index", "Artifact")<br />
+    <hr style="color:black;" />
+</div>
+
+<div>
+    @{Html.RenderPartial("getArtifactForTest");}
+    <hr style="color:black;" />
+</div>
+
+<div>
+    @{Html.RenderPartial("getArtifactForAuthentication");}
+    <hr style="color:black;" />
+</div>
+
+<div>
+    @{Html.RenderPartial("getArtifactForStorageRequirements");}
+    <hr style="color:black;" />
+</div>

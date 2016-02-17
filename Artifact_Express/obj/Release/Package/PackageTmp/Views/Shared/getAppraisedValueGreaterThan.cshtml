@@ -1,0 +1,15 @@
+﻿@model Artifact_Express.ARTIFACT
+
+@{
+    ViewBag.Title = "getAppraisedValueGreaterThan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("AppraisedValueGreaterThan", "Artifact"))
+{
+    @Html.AntiForgeryToken()
+    <h4>Find all artifacts with an appraised value greater than:</h4>
+    @Html.TextBox("appraisedNum")
+    <input type="submit" />
+}
+

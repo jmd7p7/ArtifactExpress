@@ -1,0 +1,624 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MuseumModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ARTIFACT">
+    <Key>
+      <PropertyRef Name="ArtifactId" />
+    </Key>
+    <Property Name="ArtifactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArtifactName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ArtifactDescriptionSummary" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="AppraisedValue" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="InsuredValue" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="OfTimePeriod" Type="Int32" Nullable="false" />
+    <Property Name="ArtifactType" Type="Int32" Nullable="false" />
+    <Property Name="CountryOfOrigin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="ARTIFACTTYPE1" Relationship="Self.ArtifactType_FK" FromRole="ARTIFACT" ToRole="ARTIFACTTYPE" />
+    <NavigationProperty Name="COUNTRY" Relationship="Self.Country_FK" FromRole="ARTIFACT" ToRole="COUNTRY" />
+    <NavigationProperty Name="TIMEPERIOD" Relationship="Self.OfTimePeriod_FK" FromRole="ARTIFACT" ToRole="TIMEPERIOD" />
+    <NavigationProperty Name="ARTIST" Relationship="Self.HASARTIST" FromRole="ARTIFACT" ToRole="ARTIST" />
+    <NavigationProperty Name="ARTIFACTPRESERVATIONs" Relationship="Self.HASPRESERVATION" FromRole="ARTIFACT" ToRole="ARTIFACTPRESERVATION" />
+    <NavigationProperty Name="STORAGEREQUIREMENTs" Relationship="Self.HASSTORAGEREQUIREMENT" FromRole="ARTIFACT" ToRole="STORAGEREQUIREMENT" />
+    <NavigationProperty Name="COLLECTION" Relationship="Self.INCOLLECTION" FromRole="ARTIFACT" ToRole="COLLECTION" />
+    <NavigationProperty Name="LOCATION" Relationship="Self.INLOCATION" FromRole="ARTIFACT" ToRole="LOCATION" />
+    <NavigationProperty Name="PHOTOGRAPHs" Relationship="Self.VISUALRECORD" FromRole="ARTIFACT" ToRole="PHOTOGRAPH" />
+  </EntityType>
+  <EntityType Name="ARTIFACTPRESERVATION">
+    <Key>
+      <PropertyRef Name="ArtifactPreservationId" />
+    </Key>
+    <Property Name="ArtifactPreservationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Authenticated" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="InitialCondition" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TESTUSEDs" Relationship="Self.ArtifactPreservationTestId_FK" FromRole="ARTIFACTPRESERVATION" ToRole="TESTUSED" />
+    <NavigationProperty Name="TREATMENTREGIMENUSEDs" Relationship="Self.TreatmentInArtifactPreservationId_FK" FromRole="ARTIFACTPRESERVATION" ToRole="TREATMENTREGIMENUSED" />
+    <NavigationProperty Name="ARTIFACTs" Relationship="Self.HASPRESERVATION" FromRole="ARTIFACTPRESERVATION" ToRole="ARTIFACT" />
+  </EntityType>
+  <EntityType Name="ARTIFACTTYPE">
+    <Key>
+      <PropertyRef Name="ArtifactTypeId" />
+    </Key>
+    <Property Name="ArtifactTypeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ARTIFACTs" Relationship="Self.ArtifactType_FK" FromRole="ARTIFACTTYPE" ToRole="ARTIFACT" />
+  </EntityType>
+  <EntityType Name="ARTIST">
+    <Key>
+      <PropertyRef Name="ArtistId" />
+    </Key>
+    <Property Name="ArtistId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArtistName" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ARTIFACTs" Relationship="Self.HASARTIST" FromRole="ARTIST" ToRole="ARTIFACT" />
+  </EntityType>
+  <EntityType Name="BORROWEDLOG">
+    <Key>
+      <PropertyRef Name="BorrowedArtifactID" />
+      <PropertyRef Name="MuseumBorrowedFromID" />
+      <PropertyRef Name="DateBorrowed" />
+    </Key>
+    <Property Name="BorrowedArtifactID" Type="Int32" Nullable="false" />
+    <Property Name="MuseumBorrowedFromID" Type="Int32" Nullable="false" />
+    <Property Name="DateBorrowed" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateReturned" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="COLLECTION">
+    <Key>
+      <PropertyRef Name="CollectionID" />
+    </Key>
+    <Property Name="CollectionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CollectionName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="CollectionDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CollectionTimePeriod" Type="Int32" Nullable="false" />
+    <Property Name="CollectionCountryOfOrigin" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="COUNTRY" Relationship="Self.CollectionCountryOfOrigin_FK" FromRole="COLLECTION" ToRole="COUNTRY" />
+    <NavigationProperty Name="EXHIBITs" Relationship="Self.CollectionInExhibit" FromRole="COLLECTION" ToRole="EXHIBIT" />
+    <NavigationProperty Name="TIMEPERIOD" Relationship="Self.CollectionTimePeriod_FK" FromRole="COLLECTION" ToRole="TIMEPERIOD" />
+    <NavigationProperty Name="ARTIFACTs" Relationship="Self.INCOLLECTION" FromRole="COLLECTION" ToRole="ARTIFACT" />
+  </EntityType>
+  <EntityType Name="COUNTRY">
+    <Key>
+      <PropertyRef Name="CountryID" />
+    </Key>
+    <Property Name="CountryID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CountryName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ARTIFACTs" Relationship="Self.Country_FK" FromRole="COUNTRY" ToRole="ARTIFACT" />
+    <NavigationProperty Name="COLLECTIONs" Relationship="Self.CollectionCountryOfOrigin_FK" FromRole="COUNTRY" ToRole="COLLECTION" />
+  </EntityType>
+  <EntityType Name="EXHIBIT">
+    <Key>
+      <PropertyRef Name="ExhibitID" />
+    </Key>
+    <Property Name="ExhibitID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ExhibitName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="ExhibitDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="ExhibitBeginningDate" Type="DateTime" Precision="0" />
+    <Property Name="ExhibitEndingDate" Type="DateTime" Precision="0" />
+    <Property Name="CollectionInExhibit" Type="Int32" Nullable="false" />
+    <Property Name="LocationInExhibit" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="COLLECTION" Relationship="Self.CollectionInExhibit" FromRole="EXHIBIT" ToRole="COLLECTION" />
+    <NavigationProperty Name="LOCATION" Relationship="Self.LocationInExhibit" FromRole="EXHIBIT" ToRole="LOCATION" />
+    <NavigationProperty Name="LOCATION1" Relationship="Self.LOCATIONOFEXHIBIT" FromRole="EXHIBIT" ToRole="LOCATION" />
+  </EntityType>
+  <EntityType Name="LOANEDLOG">
+    <Key>
+      <PropertyRef Name="LoanedArtifactID" />
+      <PropertyRef Name="MuseumLoanedToID" />
+      <PropertyRef Name="DateLoaned" />
+    </Key>
+    <Property Name="LoanedArtifactID" Type="Int32" Nullable="false" />
+    <Property Name="MuseumLoanedToID" Type="Int32" Nullable="false" />
+    <Property Name="DateLoaned" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="DateReturned" Type="DateTime" Precision="0" />
+  </EntityType>
+  <EntityType Name="LOCATION">
+    <Key>
+      <PropertyRef Name="LocationId" />
+    </Key>
+    <Property Name="LocationId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FloorNumber" Type="Int32" Nullable="false" />
+    <Property Name="RoomNumber" Type="Int32" Nullable="false" />
+    <Property Name="StorageOrDisplay" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="EXHIBITs" Relationship="Self.LocationInExhibit" FromRole="LOCATION" ToRole="EXHIBIT" />
+    <NavigationProperty Name="ARTIFACTs" Relationship="Self.INLOCATION" FromRole="LOCATION" ToRole="ARTIFACT" />
+    <NavigationProperty Name="EXHIBITs1" Relationship="Self.LOCATIONOFEXHIBIT" FromRole="LOCATION" ToRole="EXHIBIT" />
+  </EntityType>
+  <EntityType Name="MUSEUM">
+    <Key>
+      <PropertyRef Name="MuseumId" />
+    </Key>
+    <Property Name="MuseumId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="MuseumName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PHOTOGRAPH">
+    <Key>
+      <PropertyRef Name="PhotographId" />
+    </Key>
+    <Property Name="PhotographId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="URL" Type="String" MaxLength="200" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ARTIFACT" Relationship="Self.VISUALRECORD" FromRole="PHOTOGRAPH" ToRole="ARTIFACT" />
+  </EntityType>
+  <EntityType Name="STORAGEREQUIREMENT">
+    <Key>
+      <PropertyRef Name="StorageRequirementId" />
+    </Key>
+    <Property Name="StorageRequirementId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Type" Type="String" MaxLength="70" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="ARTIFACTs" Relationship="Self.HASSTORAGEREQUIREMENT" FromRole="STORAGEREQUIREMENT" ToRole="ARTIFACT" />
+  </EntityType>
+  <EntityType Name="SysUser">
+    <Key>
+      <PropertyRef Name="Email" />
+    </Key>
+    <Property Name="Email" Type="String" MaxLength="75" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="16" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="FullName" Type="String" MaxLength="80" FixedLength="false" Unicode="false" Nullable="false" />
+  </EntityType>
+  <EntityType Name="TEST">
+    <Key>
+      <PropertyRef Name="TestId" />
+    </Key>
+    <Property Name="TestId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TESTUSEDs" Relationship="Self.TestUsedTestId_FK" FromRole="TEST" ToRole="TESTUSED" />
+    <NavigationProperty Name="TestTools" Relationship="Self.TOOLUSEDINTEST" FromRole="TEST" ToRole="TestTools" />
+    <NavigationProperty Name="TREATMENTTECHNIQUEs" Relationship="Self.TECHNIQUEUSEDINTEST" FromRole="TEST" ToRole="TREATMENTTECHNIQUE" />
+  </EntityType>
+  <EntityType Name="TestTool">
+    <Key>
+      <PropertyRef Name="TestToolID" />
+    </Key>
+    <Property Name="TestToolID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TestToolName" Type="String" MaxLength="70" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="TESTs" Relationship="Self.TOOLUSEDINTEST" FromRole="TestTools" ToRole="TEST" />
+  </EntityType>
+  <EntityType Name="TESTUSED">
+    <Key>
+      <PropertyRef Name="TestId" />
+      <PropertyRef Name="ArtifactPreservationId" />
+    </Key>
+    <Property Name="TestId" Type="Int32" Nullable="false" />
+    <Property Name="ArtifactPreservationId" Type="Int32" Nullable="false" />
+    <Property Name="TestDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="ARTIFACTPRESERVATION" Relationship="Self.ArtifactPreservationTestId_FK" FromRole="TESTUSED" ToRole="ARTIFACTPRESERVATION" />
+    <NavigationProperty Name="TEST" Relationship="Self.TestUsedTestId_FK" FromRole="TESTUSED" ToRole="TEST" />
+  </EntityType>
+  <EntityType Name="TIMEPERIOD">
+    <Key>
+      <PropertyRef Name="TimePeriodId" />
+    </Key>
+    <Property Name="TimePeriodId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TimePeriodName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="TimePeriodBeginningYear" Type="Int32" />
+    <Property Name="TimePeriodEndingYear" Type="Int32" />
+    <NavigationProperty Name="ARTIFACTs" Relationship="Self.OfTimePeriod_FK" FromRole="TIMEPERIOD" ToRole="ARTIFACT" />
+    <NavigationProperty Name="COLLECTIONs" Relationship="Self.CollectionTimePeriod_FK" FromRole="TIMEPERIOD" ToRole="COLLECTION" />
+  </EntityType>
+  <EntityType Name="TREATMENTREGIMan">
+    <Key>
+      <PropertyRef Name="TreatmentRegimenId" />
+    </Key>
+    <Property Name="TreatmentRegimenId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TreatementDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Cost" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <NavigationProperty Name="TREATMENTREGIMENUSEDs" Relationship="Self.TreatmentRegimenUsedInTreatmentRegimenId_FK" FromRole="TREATMENTREGIMEN" ToRole="TREATMENTREGIMENUSED" />
+    <NavigationProperty Name="TREATMENTTOOLS" Relationship="Self.TOOLUSEDINTREATMENT" FromRole="TREATMENTREGIMEN" ToRole="TREATMENTTOOLS" />
+    <NavigationProperty Name="TREATMENTTECHNIQUEs" Relationship="Self.TECHNIQUEUSEDINTREATMENT" FromRole="TREATMENTREGIMEN" ToRole="TREATMENTTECHNIQUE" />
+  </EntityType>
+  <EntityType Name="TREATMENTREGIMENUSED">
+    <Key>
+      <PropertyRef Name="TreatmentRegimenId" />
+      <PropertyRef Name="ArtifactPreservationId" />
+    </Key>
+    <Property Name="TreatmentRegimenId" Type="Int32" Nullable="false" />
+    <Property Name="ArtifactPreservationId" Type="Int32" Nullable="false" />
+    <Property Name="TreatmentDate" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="ARTIFACTPRESERVATION" Relationship="Self.TreatmentInArtifactPreservationId_FK" FromRole="TREATMENTREGIMENUSED" ToRole="ARTIFACTPRESERVATION" />
+    <NavigationProperty Name="TREATMENTREGIMan" Relationship="Self.TreatmentRegimenUsedInTreatmentRegimenId_FK" FromRole="TREATMENTREGIMENUSED" ToRole="TREATMENTREGIMEN" />
+  </EntityType>
+  <EntityType Name="TREATMENTTECHNIQUE">
+    <Key>
+      <PropertyRef Name="TreatementTechniqueId" />
+    </Key>
+    <Property Name="TreatementTechniqueId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TechniqueName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="TechniqueDescription" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TESTs" Relationship="Self.TECHNIQUEUSEDINTEST" FromRole="TREATMENTTECHNIQUE" ToRole="TEST" />
+    <NavigationProperty Name="TREATMENTREGIMEN" Relationship="Self.TECHNIQUEUSEDINTREATMENT" FromRole="TREATMENTTECHNIQUE" ToRole="TREATMENTREGIMEN" />
+  </EntityType>
+  <EntityType Name="TREATMENTTOOL">
+    <Key>
+      <PropertyRef Name="ToolId" />
+    </Key>
+    <Property Name="ToolId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ToolName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="TREATMENTREGIMEN" Relationship="Self.TOOLUSEDINTREATMENT" FromRole="TREATMENTTOOLS" ToRole="TREATMENTREGIMEN" />
+  </EntityType>
+  <Association Name="ArtifactType_FK">
+    <End Role="ARTIFACTTYPE" Type="Self.ARTIFACTTYPE" Multiplicity="1" />
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ARTIFACTTYPE">
+        <PropertyRef Name="ArtifactTypeId" />
+      </Principal>
+      <Dependent Role="ARTIFACT">
+        <PropertyRef Name="ArtifactType" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Country_FK">
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="1" />
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="ARTIFACT">
+        <PropertyRef Name="CountryOfOrigin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="OfTimePeriod_FK">
+    <End Role="TIMEPERIOD" Type="Self.TIMEPERIOD" Multiplicity="1" />
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIMEPERIOD">
+        <PropertyRef Name="TimePeriodId" />
+      </Principal>
+      <Dependent Role="ARTIFACT">
+        <PropertyRef Name="OfTimePeriod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ArtifactPreservationTestId_FK">
+    <End Role="ARTIFACTPRESERVATION" Type="Self.ARTIFACTPRESERVATION" Multiplicity="1" />
+    <End Role="TESTUSED" Type="Self.TESTUSED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ARTIFACTPRESERVATION">
+        <PropertyRef Name="ArtifactPreservationId" />
+      </Principal>
+      <Dependent Role="TESTUSED">
+        <PropertyRef Name="ArtifactPreservationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TreatmentInArtifactPreservationId_FK">
+    <End Role="ARTIFACTPRESERVATION" Type="Self.ARTIFACTPRESERVATION" Multiplicity="1" />
+    <End Role="TREATMENTREGIMENUSED" Type="Self.TREATMENTREGIMENUSED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="ARTIFACTPRESERVATION">
+        <PropertyRef Name="ArtifactPreservationId" />
+      </Principal>
+      <Dependent Role="TREATMENTREGIMENUSED">
+        <PropertyRef Name="ArtifactPreservationId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionCountryOfOrigin_FK">
+    <End Role="COUNTRY" Type="Self.COUNTRY" Multiplicity="1" />
+    <End Role="COLLECTION" Type="Self.COLLECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COUNTRY">
+        <PropertyRef Name="CountryID" />
+      </Principal>
+      <Dependent Role="COLLECTION">
+        <PropertyRef Name="CollectionCountryOfOrigin" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionInExhibit">
+    <End Role="COLLECTION" Type="Self.COLLECTION" Multiplicity="1" />
+    <End Role="EXHIBIT" Type="Self.EXHIBIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="COLLECTION">
+        <PropertyRef Name="CollectionID" />
+      </Principal>
+      <Dependent Role="EXHIBIT">
+        <PropertyRef Name="CollectionInExhibit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="CollectionTimePeriod_FK">
+    <End Role="TIMEPERIOD" Type="Self.TIMEPERIOD" Multiplicity="1" />
+    <End Role="COLLECTION" Type="Self.COLLECTION" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TIMEPERIOD">
+        <PropertyRef Name="TimePeriodId" />
+      </Principal>
+      <Dependent Role="COLLECTION">
+        <PropertyRef Name="CollectionTimePeriod" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="LocationInExhibit">
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="1" />
+    <End Role="EXHIBIT" Type="Self.EXHIBIT" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="LOCATION">
+        <PropertyRef Name="LocationId" />
+      </Principal>
+      <Dependent Role="EXHIBIT">
+        <PropertyRef Name="LocationInExhibit" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TestUsedTestId_FK">
+    <End Role="TEST" Type="Self.TEST" Multiplicity="1" />
+    <End Role="TESTUSED" Type="Self.TESTUSED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TEST">
+        <PropertyRef Name="TestId" />
+      </Principal>
+      <Dependent Role="TESTUSED">
+        <PropertyRef Name="TestId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="TreatmentRegimenUsedInTreatmentRegimenId_FK">
+    <End Role="TREATMENTREGIMEN" Type="Self.TREATMENTREGIMan" Multiplicity="1" />
+    <End Role="TREATMENTREGIMENUSED" Type="Self.TREATMENTREGIMENUSED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TREATMENTREGIMEN">
+        <PropertyRef Name="TreatmentRegimenId" />
+      </Principal>
+      <Dependent Role="TREATMENTREGIMENUSED">
+        <PropertyRef Name="TreatmentRegimenId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="HASARTIST">
+    <End Role="ARTIST" Type="Self.ARTIST" Multiplicity="0..1" />
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="*" />
+  </Association>
+  <Association Name="HASPRESERVATION">
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="*" />
+    <End Role="ARTIFACTPRESERVATION" Type="Self.ARTIFACTPRESERVATION" Multiplicity="*" />
+  </Association>
+  <Association Name="HASSTORAGEREQUIREMENT">
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="*" />
+    <End Role="STORAGEREQUIREMENT" Type="Self.STORAGEREQUIREMENT" Multiplicity="*" />
+  </Association>
+  <Association Name="INCOLLECTION">
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="*" />
+    <End Role="COLLECTION" Type="Self.COLLECTION" Multiplicity="0..1" />
+  </Association>
+  <Association Name="INLOCATION">
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="*" />
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="0..1" />
+  </Association>
+  <Association Name="LOCATIONOFEXHIBIT">
+    <End Role="EXHIBIT" Type="Self.EXHIBIT" Multiplicity="*" />
+    <End Role="LOCATION" Type="Self.LOCATION" Multiplicity="0..1" />
+  </Association>
+  <Association Name="TOOLUSEDINTEST">
+    <End Role="TestTools" Type="Self.TestTool" Multiplicity="*" />
+    <End Role="TEST" Type="Self.TEST" Multiplicity="*" />
+  </Association>
+  <Association Name="TOOLUSEDINTREATMENT">
+    <End Role="TREATMENTTOOLS" Type="Self.TREATMENTTOOL" Multiplicity="*" />
+    <End Role="TREATMENTREGIMEN" Type="Self.TREATMENTREGIMan" Multiplicity="*" />
+  </Association>
+  <Association Name="VISUALRECORD">
+    <End Role="PHOTOGRAPH" Type="Self.PHOTOGRAPH" Multiplicity="*" />
+    <End Role="ARTIFACT" Type="Self.ARTIFACT" Multiplicity="0..1" />
+  </Association>
+  <Association Name="TECHNIQUEUSEDINTEST">
+    <End Role="TEST" Type="Self.TEST" Multiplicity="*" />
+    <End Role="TREATMENTTECHNIQUE" Type="Self.TREATMENTTECHNIQUE" Multiplicity="*" />
+  </Association>
+  <Association Name="TECHNIQUEUSEDINTREATMENT">
+    <End Role="TREATMENTREGIMEN" Type="Self.TREATMENTREGIMan" Multiplicity="*" />
+    <End Role="TREATMENTTECHNIQUE" Type="Self.TREATMENTTECHNIQUE" Multiplicity="*" />
+  </Association>
+  <EntityContainer Name="MuseumEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ARTIFACTs" EntityType="Self.ARTIFACT" />
+    <EntitySet Name="ARTIFACTPRESERVATIONs" EntityType="Self.ARTIFACTPRESERVATION" />
+    <EntitySet Name="ARTIFACTTYPEs" EntityType="Self.ARTIFACTTYPE" />
+    <EntitySet Name="ARTISTs" EntityType="Self.ARTIST" />
+    <EntitySet Name="BORROWEDLOGs" EntityType="Self.BORROWEDLOG" />
+    <EntitySet Name="COLLECTIONs" EntityType="Self.COLLECTION" />
+    <EntitySet Name="COUNTRies" EntityType="Self.COUNTRY" />
+    <EntitySet Name="EXHIBITs" EntityType="Self.EXHIBIT" />
+    <EntitySet Name="LOANEDLOGs" EntityType="Self.LOANEDLOG" />
+    <EntitySet Name="LOCATIONs" EntityType="Self.LOCATION" />
+    <EntitySet Name="MUSEUMs" EntityType="Self.MUSEUM" />
+    <EntitySet Name="PHOTOGRAPHs" EntityType="Self.PHOTOGRAPH" />
+    <EntitySet Name="STORAGEREQUIREMENTs" EntityType="Self.STORAGEREQUIREMENT" />
+    <EntitySet Name="SysUsers" EntityType="Self.SysUser" />
+    <EntitySet Name="TESTs" EntityType="Self.TEST" />
+    <EntitySet Name="TestTools" EntityType="Self.TestTool" />
+    <EntitySet Name="TESTUSEDs" EntityType="Self.TESTUSED" />
+    <EntitySet Name="TIMEPERIODs" EntityType="Self.TIMEPERIOD" />
+    <EntitySet Name="TREATMENTREGIMEN" EntityType="Self.TREATMENTREGIMan" />
+    <EntitySet Name="TREATMENTREGIMENUSEDs" EntityType="Self.TREATMENTREGIMENUSED" />
+    <EntitySet Name="TREATMENTTECHNIQUEs" EntityType="Self.TREATMENTTECHNIQUE" />
+    <EntitySet Name="TREATMENTTOOLS" EntityType="Self.TREATMENTTOOL" />
+    <AssociationSet Name="ArtifactType_FK" Association="Self.ArtifactType_FK">
+      <End Role="ARTIFACTTYPE" EntitySet="ARTIFACTTYPEs" />
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+    </AssociationSet>
+    <AssociationSet Name="Country_FK" Association="Self.Country_FK">
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+    </AssociationSet>
+    <AssociationSet Name="OfTimePeriod_FK" Association="Self.OfTimePeriod_FK">
+      <End Role="TIMEPERIOD" EntitySet="TIMEPERIODs" />
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+    </AssociationSet>
+    <AssociationSet Name="ArtifactPreservationTestId_FK" Association="Self.ArtifactPreservationTestId_FK">
+      <End Role="ARTIFACTPRESERVATION" EntitySet="ARTIFACTPRESERVATIONs" />
+      <End Role="TESTUSED" EntitySet="TESTUSEDs" />
+    </AssociationSet>
+    <AssociationSet Name="TreatmentInArtifactPreservationId_FK" Association="Self.TreatmentInArtifactPreservationId_FK">
+      <End Role="ARTIFACTPRESERVATION" EntitySet="ARTIFACTPRESERVATIONs" />
+      <End Role="TREATMENTREGIMENUSED" EntitySet="TREATMENTREGIMENUSEDs" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionCountryOfOrigin_FK" Association="Self.CollectionCountryOfOrigin_FK">
+      <End Role="COUNTRY" EntitySet="COUNTRies" />
+      <End Role="COLLECTION" EntitySet="COLLECTIONs" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionInExhibit" Association="Self.CollectionInExhibit">
+      <End Role="COLLECTION" EntitySet="COLLECTIONs" />
+      <End Role="EXHIBIT" EntitySet="EXHIBITs" />
+    </AssociationSet>
+    <AssociationSet Name="CollectionTimePeriod_FK" Association="Self.CollectionTimePeriod_FK">
+      <End Role="TIMEPERIOD" EntitySet="TIMEPERIODs" />
+      <End Role="COLLECTION" EntitySet="COLLECTIONs" />
+    </AssociationSet>
+    <AssociationSet Name="LocationInExhibit" Association="Self.LocationInExhibit">
+      <End Role="LOCATION" EntitySet="LOCATIONs" />
+      <End Role="EXHIBIT" EntitySet="EXHIBITs" />
+    </AssociationSet>
+    <AssociationSet Name="TestUsedTestId_FK" Association="Self.TestUsedTestId_FK">
+      <End Role="TEST" EntitySet="TESTs" />
+      <End Role="TESTUSED" EntitySet="TESTUSEDs" />
+    </AssociationSet>
+    <AssociationSet Name="TreatmentRegimenUsedInTreatmentRegimenId_FK" Association="Self.TreatmentRegimenUsedInTreatmentRegimenId_FK">
+      <End Role="TREATMENTREGIMEN" EntitySet="TREATMENTREGIMEN" />
+      <End Role="TREATMENTREGIMENUSED" EntitySet="TREATMENTREGIMENUSEDs" />
+    </AssociationSet>
+    <AssociationSet Name="HASARTIST" Association="Self.HASARTIST">
+      <End Role="ARTIST" EntitySet="ARTISTs" />
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+    </AssociationSet>
+    <AssociationSet Name="HASPRESERVATION" Association="Self.HASPRESERVATION">
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+      <End Role="ARTIFACTPRESERVATION" EntitySet="ARTIFACTPRESERVATIONs" />
+    </AssociationSet>
+    <AssociationSet Name="HASSTORAGEREQUIREMENT" Association="Self.HASSTORAGEREQUIREMENT">
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+      <End Role="STORAGEREQUIREMENT" EntitySet="STORAGEREQUIREMENTs" />
+    </AssociationSet>
+    <AssociationSet Name="INCOLLECTION" Association="Self.INCOLLECTION">
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+      <End Role="COLLECTION" EntitySet="COLLECTIONs" />
+    </AssociationSet>
+    <AssociationSet Name="INLOCATION" Association="Self.INLOCATION">
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+      <End Role="LOCATION" EntitySet="LOCATIONs" />
+    </AssociationSet>
+    <AssociationSet Name="LOCATIONOFEXHIBIT" Association="Self.LOCATIONOFEXHIBIT">
+      <End Role="EXHIBIT" EntitySet="EXHIBITs" />
+      <End Role="LOCATION" EntitySet="LOCATIONs" />
+    </AssociationSet>
+    <AssociationSet Name="TOOLUSEDINTEST" Association="Self.TOOLUSEDINTEST">
+      <End Role="TestTools" EntitySet="TestTools" />
+      <End Role="TEST" EntitySet="TESTs" />
+    </AssociationSet>
+    <AssociationSet Name="TOOLUSEDINTREATMENT" Association="Self.TOOLUSEDINTREATMENT">
+      <End Role="TREATMENTTOOLS" EntitySet="TREATMENTTOOLS" />
+      <End Role="TREATMENTREGIMEN" EntitySet="TREATMENTREGIMEN" />
+    </AssociationSet>
+    <AssociationSet Name="VISUALRECORD" Association="Self.VISUALRECORD">
+      <End Role="PHOTOGRAPH" EntitySet="PHOTOGRAPHs" />
+      <End Role="ARTIFACT" EntitySet="ARTIFACTs" />
+    </AssociationSet>
+    <AssociationSet Name="TECHNIQUEUSEDINTEST" Association="Self.TECHNIQUEUSEDINTEST">
+      <End Role="TEST" EntitySet="TESTs" />
+      <End Role="TREATMENTTECHNIQUE" EntitySet="TREATMENTTECHNIQUEs" />
+    </AssociationSet>
+    <AssociationSet Name="TECHNIQUEUSEDINTREATMENT" Association="Self.TECHNIQUEUSEDINTREATMENT">
+      <End Role="TREATMENTREGIMEN" EntitySet="TREATMENTREGIMEN" />
+      <End Role="TREATMENTTECHNIQUE" EntitySet="TREATMENTTECHNIQUEs" />
+    </AssociationSet>
+    <FunctionImport Name="AppraisedValueGreaterThan" ReturnType="Collection(MuseumModel.AppraisedValueGreaterThan_Result)">
+      <Parameter Name="appraisedNum" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="ArtifactsBorrowed" ReturnType="Collection(MuseumModel.ArtifactsBorrowed_Result)">
+      <Parameter Name="museumName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ArtifactsFromTimePeriod" ReturnType="Collection(MuseumModel.ArtifactsFromTimePeriod_Result)">
+      <Parameter Name="timePeriod" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="ArtifactsOnLoan" ReturnType="Collection(MuseumModel.ArtifactsOnLoan_Result)">
+      <Parameter Name="museumName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="BorrowAnArtifact">
+      <Parameter Name="ArtifactID" Mode="In" Type="Int32" />
+      <Parameter Name="MuseumID" Mode="In" Type="Int32" />
+      <Parameter Name="DateBorrowed" Mode="In" Type="DateTime" />
+      <Parameter Name="DateReturned" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="FindArtifactLocation" ReturnType="Collection(MuseumModel.FindArtifactLocation_Result)">
+      <Parameter Name="artifactName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllTestsForArtifact" ReturnType="Collection(MuseumModel.GetAllTestsForArtifact_Result)">
+      <Parameter Name="artifactName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetAllToolsUsedInTest" ReturnType="Collection(MuseumModel.GetAllToolsUsedInTest_Result)">
+      <Parameter Name="artifactName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetArtifactAuthentication" ReturnType="Collection(MuseumModel.GetArtifactAuthentication_Result)">
+      <Parameter Name="artifactName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetArtifactsInExhibition" ReturnType="Collection(MuseumModel.GetArtifactsInExhibition_Result)">
+      <Parameter Name="ExhibitionName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetArtifactsInLocation" ReturnType="Collection(String)">
+      <Parameter Name="Room" Mode="In" Type="Int32" />
+      <Parameter Name="Floor" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="getSpecificCollection" ReturnType="Collection(MuseumModel.getSpecificCollection_Result)">
+      <Parameter Name="CollectionName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="GetStorageRequirements" ReturnType="Collection(MuseumModel.GetStorageRequirements_Result)">
+      <Parameter Name="ArtifactName" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="LoanAnArtifact">
+      <Parameter Name="ArtifactID" Mode="In" Type="Int32" />
+      <Parameter Name="MuseumID" Mode="In" Type="Int32" />
+      <Parameter Name="DateLoaned" Mode="In" Type="DateTime" />
+      <Parameter Name="DateReturned" Mode="In" Type="DateTime" />
+    </FunctionImport>
+    <FunctionImport Name="ViewArtifactDescription" ReturnType="Collection(MuseumModel.ViewArtifactDescription_Result)">
+      <Parameter Name="artifactName" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="AppraisedValueGreaterThan_Result">
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+    <Property Type="Decimal" Name="AppraisedValue" Nullable="false" Precision="10" Scale="2" />
+  </ComplexType>
+  <ComplexType Name="ArtifactsBorrowed_Result">
+    <Property Type="String" Name="MuseumName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="ArtifactsFromTimePeriod_Result">
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="TimePeriodName" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="ArtifactsOnLoan_Result">
+    <Property Type="String" Name="MuseumName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="FindArtifactLocation_Result">
+    <Property Type="Int32" Name="RoomNumber" Nullable="false" />
+    <Property Type="Int32" Name="FloorNumber" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="GetAllTestsForArtifact_Result">
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="TestName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetAllToolsUsedInTest_Result">
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ToolName" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="GetArtifactAuthentication_Result">
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Authenticated" Nullable="true" MaxLength="1" />
+  </ComplexType>
+  <ComplexType Name="GetArtifactsInExhibition_Result">
+    <Property Type="String" Name="Exhibition" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Artifact" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ArtifactDescriptionSummary" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+  <ComplexType Name="getSpecificCollection_Result">
+    <Property Type="String" Name="Collection" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Artifact" Nullable="false" MaxLength="100" />
+  </ComplexType>
+  <ComplexType Name="GetStorageRequirements_Result">
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="Type" Nullable="false" MaxLength="70" />
+  </ComplexType>
+  <ComplexType Name="ViewArtifactDescription_Result">
+    <Property Type="String" Name="ArtifactName" Nullable="false" MaxLength="100" />
+    <Property Type="String" Name="ArtifactDescriptionSummary" Nullable="false" MaxLength="1000" />
+  </ComplexType>
+</Schema>

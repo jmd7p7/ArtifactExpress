@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Artifact_Express.GetStorageRequirements_Result>
+
+@{
+    ViewBag.Title = "getStorageRequirements";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Storage Requirements</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtifactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtifactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+    </tr>
+}
+
+</table>

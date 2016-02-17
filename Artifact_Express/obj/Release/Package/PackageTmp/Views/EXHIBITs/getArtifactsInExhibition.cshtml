@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Artifact_Express.GetArtifactsInExhibition_Result>
+
+@{
+    ViewBag.Title = "getArtifactsInExhibition";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Artifacts in exhibition:</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Description
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Exhibition)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtifactDescriptionSummary)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "getLocation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("getSpecificCollection", "Collection"))
+{
+    @Html.AntiForgeryToken()
+    <h4>Enter collection name to view all artifacts in collection:</h4>
+    <label>Collection Name: </label>@Html.TextBox("collectionName")
+    <input type="submit" />
+}
+

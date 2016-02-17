@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<parameters>
+  <parameter name="DefaultConnection-Web.config Connection String" description="DefaultConnection Connection String used in web.config by the application to access the database." defaultValue="Data Source=(LocalDb)\v11.0;AttachDbFilename=|DataDirectory|\aspnet-Artifact_Express-20141120112421.mdf;Initial Catalog=aspnet-Artifact_Express-20141120112421;Integrated Security=True" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jonathan\\Documents\\School\\Classes\\CS\ 470\\Project\\Visual\ Studio\ Files\\Artifact_Express\\Artifact_Express\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='DefaultConnection']/@connectionString" />
+  </parameter>
+  <parameter name="MuseumEntities-Web.config Connection String" description="MuseumEntities Connection String used in web.config by the application to access the database." defaultValue="metadata=res://*/Model1.csdl|res://*/Model1.ssdl|res://*/Model1.msl;provider=System.Data.SqlClient;provider connection string=&quot;data source=pboxl1ag8i.database.windows.net;initial catalog=Museum;persist security info=True;user id=dejl470;password=Group1_pw;MultipleActiveResultSets=True;App=EntityFramework&quot;" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jonathan\\Documents\\School\\Classes\\CS\ 470\\Project\\Visual\ Studio\ Files\\Artifact_Express\\Artifact_Express\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MuseumEntities']/@connectionString" />
+  </parameter>
+  <parameter name="MuseumEntities_DatabasePublish-Web.config Connection String" description="MuseumEntities_DatabasePublish Connection String used in web.config by the application to access the database." defaultValue="MuseumEntities_DatabasePublish.ConnetionString" tags="SqlConnectionString">
+    <parameterEntry kind="XmlFile" scope="C:\\Users\\Jonathan\\Documents\\School\\Classes\\CS\ 470\\Project\\Visual\ Studio\ Files\\Artifact_Express\\Artifact_Express\\obj\\Release\\Package\\PackageTmp\\Web\.config$" match="/configuration/connectionStrings/add[@name='MuseumEntities_DatabasePublish']/@connectionString" />
+  </parameter>
+</parameters>

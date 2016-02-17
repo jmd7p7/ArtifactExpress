@@ -1,0 +1,397 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MuseumModelStoreContainer" CdmEntityContainer="MuseumEntities">
+    <EntitySetMapping Name="ARTIFACTs">
+      <EntityTypeMapping TypeName="MuseumModel.ARTIFACT">
+        <MappingFragment StoreEntitySet="ARTIFACT">
+          <ScalarProperty Name="ArtifactId" ColumnName="ArtifactId" />
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+          <ScalarProperty Name="ArtifactDescriptionSummary" ColumnName="ArtifactDescriptionSummary" />
+          <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+          <ScalarProperty Name="InsuredValue" ColumnName="InsuredValue" />
+          <ScalarProperty Name="OfTimePeriod" ColumnName="OfTimePeriod" />
+          <ScalarProperty Name="ArtifactType" ColumnName="ArtifactType" />
+          <ScalarProperty Name="CountryOfOrigin" ColumnName="CountryOfOrigin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARTIFACTPRESERVATIONs">
+      <EntityTypeMapping TypeName="MuseumModel.ARTIFACTPRESERVATION">
+        <MappingFragment StoreEntitySet="ARTIFACTPRESERVATION">
+          <ScalarProperty Name="ArtifactPreservationId" ColumnName="ArtifactPreservationId" />
+          <ScalarProperty Name="Authenticated" ColumnName="Authenticated" />
+          <ScalarProperty Name="InitialCondition" ColumnName="InitialCondition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARTIFACTTYPEs">
+      <EntityTypeMapping TypeName="MuseumModel.ARTIFACTTYPE">
+        <MappingFragment StoreEntitySet="ARTIFACTTYPE">
+          <ScalarProperty Name="ArtifactTypeId" ColumnName="ArtifactTypeId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ARTISTs">
+      <EntityTypeMapping TypeName="MuseumModel.ARTIST">
+        <MappingFragment StoreEntitySet="ARTIST">
+          <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+          <ScalarProperty Name="ArtistName" ColumnName="ArtistName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="BORROWEDLOGs">
+      <EntityTypeMapping TypeName="MuseumModel.BORROWEDLOG">
+        <MappingFragment StoreEntitySet="BORROWEDLOG">
+          <ScalarProperty Name="BorrowedArtifactID" ColumnName="BorrowedArtifactID" />
+          <ScalarProperty Name="MuseumBorrowedFromID" ColumnName="MuseumBorrowedFromID" />
+          <ScalarProperty Name="DateBorrowed" ColumnName="DateBorrowed" />
+          <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COLLECTIONs">
+      <EntityTypeMapping TypeName="MuseumModel.COLLECTION">
+        <MappingFragment StoreEntitySet="COLLECTION">
+          <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+          <ScalarProperty Name="CollectionName" ColumnName="CollectionName" />
+          <ScalarProperty Name="CollectionDescription" ColumnName="CollectionDescription" />
+          <ScalarProperty Name="CollectionTimePeriod" ColumnName="CollectionTimePeriod" />
+          <ScalarProperty Name="CollectionCountryOfOrigin" ColumnName="CollectionCountryOfOrigin" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="COUNTRies">
+      <EntityTypeMapping TypeName="MuseumModel.COUNTRY">
+        <MappingFragment StoreEntitySet="COUNTRY">
+          <ScalarProperty Name="CountryID" ColumnName="CountryID" />
+          <ScalarProperty Name="CountryName" ColumnName="CountryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="EXHIBITs">
+      <EntityTypeMapping TypeName="MuseumModel.EXHIBIT">
+        <MappingFragment StoreEntitySet="EXHIBIT">
+          <ScalarProperty Name="ExhibitID" ColumnName="ExhibitID" />
+          <ScalarProperty Name="ExhibitName" ColumnName="ExhibitName" />
+          <ScalarProperty Name="ExhibitDescription" ColumnName="ExhibitDescription" />
+          <ScalarProperty Name="ExhibitBeginningDate" ColumnName="ExhibitBeginningDate" />
+          <ScalarProperty Name="ExhibitEndingDate" ColumnName="ExhibitEndingDate" />
+          <ScalarProperty Name="CollectionInExhibit" ColumnName="CollectionInExhibit" />
+          <ScalarProperty Name="LocationInExhibit" ColumnName="LocationInExhibit" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOANEDLOGs">
+      <EntityTypeMapping TypeName="MuseumModel.LOANEDLOG">
+        <MappingFragment StoreEntitySet="LOANEDLOG">
+          <ScalarProperty Name="LoanedArtifactID" ColumnName="LoanedArtifactID" />
+          <ScalarProperty Name="MuseumLoanedToID" ColumnName="MuseumLoanedToID" />
+          <ScalarProperty Name="DateLoaned" ColumnName="DateLoaned" />
+          <ScalarProperty Name="DateReturned" ColumnName="DateReturned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="LOCATIONs">
+      <EntityTypeMapping TypeName="MuseumModel.LOCATION">
+        <MappingFragment StoreEntitySet="LOCATION">
+          <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+          <ScalarProperty Name="FloorNumber" ColumnName="FloorNumber" />
+          <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+          <ScalarProperty Name="StorageOrDisplay" ColumnName="StorageOrDisplay" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MUSEUMs">
+      <EntityTypeMapping TypeName="MuseumModel.MUSEUM">
+        <MappingFragment StoreEntitySet="MUSEUM">
+          <ScalarProperty Name="MuseumId" ColumnName="MuseumId" />
+          <ScalarProperty Name="MuseumName" ColumnName="MuseumName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PHOTOGRAPHs">
+      <EntityTypeMapping TypeName="MuseumModel.PHOTOGRAPH">
+        <MappingFragment StoreEntitySet="PHOTOGRAPH">
+          <ScalarProperty Name="PhotographId" ColumnName="PhotographId" />
+          <ScalarProperty Name="URL" ColumnName="URL" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="STORAGEREQUIREMENTs">
+      <EntityTypeMapping TypeName="MuseumModel.STORAGEREQUIREMENT">
+        <MappingFragment StoreEntitySet="STORAGEREQUIREMENT">
+          <ScalarProperty Name="StorageRequirementId" ColumnName="StorageRequirementId" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SysUsers">
+      <EntityTypeMapping TypeName="MuseumModel.SysUser">
+        <MappingFragment StoreEntitySet="SysUser">
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TESTs">
+      <EntityTypeMapping TypeName="MuseumModel.TEST">
+        <MappingFragment StoreEntitySet="TEST">
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TestTools">
+      <EntityTypeMapping TypeName="MuseumModel.TestTool">
+        <MappingFragment StoreEntitySet="TestTools">
+          <ScalarProperty Name="TestToolID" ColumnName="TestToolID" />
+          <ScalarProperty Name="TestToolName" ColumnName="TestToolName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TESTUSEDs">
+      <EntityTypeMapping TypeName="MuseumModel.TESTUSED">
+        <MappingFragment StoreEntitySet="TESTUSED">
+          <ScalarProperty Name="TestId" ColumnName="TestId" />
+          <ScalarProperty Name="ArtifactPreservationId" ColumnName="ArtifactPreservationId" />
+          <ScalarProperty Name="TestDate" ColumnName="TestDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TIMEPERIODs">
+      <EntityTypeMapping TypeName="MuseumModel.TIMEPERIOD">
+        <MappingFragment StoreEntitySet="TIMEPERIOD">
+          <ScalarProperty Name="TimePeriodId" ColumnName="TimePeriodId" />
+          <ScalarProperty Name="TimePeriodName" ColumnName="TimePeriodName" />
+          <ScalarProperty Name="TimePeriodBeginningYear" ColumnName="TimePeriodBeginningYear" />
+          <ScalarProperty Name="TimePeriodEndingYear" ColumnName="TimePeriodEndingYear" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TREATMENTREGIMEN">
+      <EntityTypeMapping TypeName="MuseumModel.TREATMENTREGIMan">
+        <MappingFragment StoreEntitySet="TREATMENTREGIMEN">
+          <ScalarProperty Name="TreatmentRegimenId" ColumnName="TreatmentRegimenId" />
+          <ScalarProperty Name="TreatementDescription" ColumnName="TreatementDescription" />
+          <ScalarProperty Name="Cost" ColumnName="Cost" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TREATMENTREGIMENUSEDs">
+      <EntityTypeMapping TypeName="MuseumModel.TREATMENTREGIMENUSED">
+        <MappingFragment StoreEntitySet="TREATMENTREGIMENUSED">
+          <ScalarProperty Name="TreatmentRegimenId" ColumnName="TreatmentRegimenId" />
+          <ScalarProperty Name="ArtifactPreservationId" ColumnName="ArtifactPreservationId" />
+          <ScalarProperty Name="TreatmentDate" ColumnName="TreatmentDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TREATMENTTECHNIQUEs">
+      <EntityTypeMapping TypeName="MuseumModel.TREATMENTTECHNIQUE">
+        <MappingFragment StoreEntitySet="TREATMENTTECHNIQUE">
+          <ScalarProperty Name="TreatementTechniqueId" ColumnName="TreatementTechniqueId" />
+          <ScalarProperty Name="TechniqueName" ColumnName="TechniqueName" />
+          <ScalarProperty Name="TechniqueDescription" ColumnName="TechniqueDescription" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TREATMENTTOOLS">
+      <EntityTypeMapping TypeName="MuseumModel.TREATMENTTOOL">
+        <MappingFragment StoreEntitySet="TREATMENTTOOLS">
+          <ScalarProperty Name="ToolId" ColumnName="ToolId" />
+          <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="HASARTIST" TypeName="MuseumModel.HASARTIST" StoreEntitySet="HASARTIST">
+      <EndProperty Name="ARTIST">
+        <ScalarProperty Name="ArtistId" ColumnName="ArtistId" />
+      </EndProperty>
+      <EndProperty Name="ARTIFACT">
+        <ScalarProperty Name="ArtifactId" ColumnName="ArtifactId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HASPRESERVATION" TypeName="MuseumModel.HASPRESERVATION" StoreEntitySet="HASPRESERVATION">
+      <EndProperty Name="ARTIFACT">
+        <ScalarProperty Name="ArtifactId" ColumnName="ArtifactId" />
+      </EndProperty>
+      <EndProperty Name="ARTIFACTPRESERVATION">
+        <ScalarProperty Name="ArtifactPreservationId" ColumnName="ArtifactPreservationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="HASSTORAGEREQUIREMENT" TypeName="MuseumModel.HASSTORAGEREQUIREMENT" StoreEntitySet="HASSTORAGEREQUIREMENT">
+      <EndProperty Name="ARTIFACT">
+        <ScalarProperty Name="ArtifactId" ColumnName="ArtifactId" />
+      </EndProperty>
+      <EndProperty Name="STORAGEREQUIREMENT">
+        <ScalarProperty Name="StorageRequirementId" ColumnName="StorageRequirementId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="INCOLLECTION" TypeName="MuseumModel.INCOLLECTION" StoreEntitySet="INCOLLECTION">
+      <EndProperty Name="ARTIFACT">
+        <ScalarProperty Name="ArtifactId" ColumnName="ArtifactId" />
+      </EndProperty>
+      <EndProperty Name="COLLECTION">
+        <ScalarProperty Name="CollectionID" ColumnName="CollectionID" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="INLOCATION" TypeName="MuseumModel.INLOCATION" StoreEntitySet="INLOCATION">
+      <EndProperty Name="ARTIFACT">
+        <ScalarProperty Name="ArtifactId" ColumnName="ArtifactId" />
+      </EndProperty>
+      <EndProperty Name="LOCATION">
+        <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="LOCATIONOFEXHIBIT" TypeName="MuseumModel.LOCATIONOFEXHIBIT" StoreEntitySet="LOCATIONOFEXHIBIT">
+      <EndProperty Name="EXHIBIT">
+        <ScalarProperty Name="ExhibitID" ColumnName="ExhibitId" />
+      </EndProperty>
+      <EndProperty Name="LOCATION">
+        <ScalarProperty Name="LocationId" ColumnName="LocationId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TOOLUSEDINTEST" TypeName="MuseumModel.TOOLUSEDINTEST" StoreEntitySet="TOOLUSEDINTEST">
+      <EndProperty Name="TestTools">
+        <ScalarProperty Name="TestToolID" ColumnName="ToolId" />
+      </EndProperty>
+      <EndProperty Name="TEST">
+        <ScalarProperty Name="TestId" ColumnName="TestId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TOOLUSEDINTREATMENT" TypeName="MuseumModel.TOOLUSEDINTREATMENT" StoreEntitySet="TOOLUSEDINTREATMENT">
+      <EndProperty Name="TREATMENTTOOLS">
+        <ScalarProperty Name="ToolId" ColumnName="ToolId" />
+      </EndProperty>
+      <EndProperty Name="TREATMENTREGIMEN">
+        <ScalarProperty Name="TreatmentRegimenId" ColumnName="TreatmentRegimenId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="VISUALRECORD" TypeName="MuseumModel.VISUALRECORD" StoreEntitySet="VISUALRECORD">
+      <EndProperty Name="PHOTOGRAPH">
+        <ScalarProperty Name="PhotographId" ColumnName="PhotographId" />
+      </EndProperty>
+      <EndProperty Name="ARTIFACT">
+        <ScalarProperty Name="ArtifactId" ColumnName="ArtifactId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TECHNIQUEUSEDINTEST" TypeName="MuseumModel.TECHNIQUEUSEDINTEST" StoreEntitySet="TECHNIQUEUSEDINTEST">
+      <EndProperty Name="TEST">
+        <ScalarProperty Name="TestId" ColumnName="TestId" />
+      </EndProperty>
+      <EndProperty Name="TREATMENTTECHNIQUE">
+        <ScalarProperty Name="TreatementTechniqueId" ColumnName="TreatementTechniqueId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <AssociationSetMapping Name="TECHNIQUEUSEDINTREATMENT" TypeName="MuseumModel.TECHNIQUEUSEDINTREATMENT" StoreEntitySet="TECHNIQUEUSEDINTREATMENT">
+      <EndProperty Name="TREATMENTREGIMEN">
+        <ScalarProperty Name="TreatmentRegimenId" ColumnName="TreatmentRegimenId" />
+      </EndProperty>
+      <EndProperty Name="TREATMENTTECHNIQUE">
+        <ScalarProperty Name="TreatementTechniqueId" ColumnName="TreatementTechniqueId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <FunctionImportMapping FunctionImportName="AppraisedValueGreaterThan" FunctionName="MuseumModel.Store.AppraisedValueGreaterThan">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.AppraisedValueGreaterThan_Result">
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+          <ScalarProperty Name="AppraisedValue" ColumnName="AppraisedValue" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ArtifactsBorrowed" FunctionName="MuseumModel.Store.ArtifactsBorrowed">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.ArtifactsBorrowed_Result">
+          <ScalarProperty Name="MuseumName" ColumnName="MuseumName" />
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ArtifactsFromTimePeriod" FunctionName="MuseumModel.Store.ArtifactsFromTimePeriod">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.ArtifactsFromTimePeriod_Result">
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+          <ScalarProperty Name="TimePeriodName" ColumnName="TimePeriodName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="ArtifactsOnLoan" FunctionName="MuseumModel.Store.ArtifactsOnLoan">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.ArtifactsOnLoan_Result">
+          <ScalarProperty Name="MuseumName" ColumnName="MuseumName" />
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="BorrowAnArtifact" FunctionName="MuseumModel.Store.BorrowAnArtifact" />
+    <FunctionImportMapping FunctionImportName="FindArtifactLocation" FunctionName="MuseumModel.Store.FindArtifactLocation">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.FindArtifactLocation_Result">
+          <ScalarProperty Name="RoomNumber" ColumnName="RoomNumber" />
+          <ScalarProperty Name="FloorNumber" ColumnName="FloorNumber" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllTestsForArtifact" FunctionName="MuseumModel.Store.GetAllTestsForArtifact">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.GetAllTestsForArtifact_Result">
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+          <ScalarProperty Name="TestName" ColumnName="TestName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetAllToolsUsedInTest" FunctionName="MuseumModel.Store.GetAllToolsUsedInTest">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.GetAllToolsUsedInTest_Result">
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+          <ScalarProperty Name="ToolName" ColumnName="ToolName" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetArtifactAuthentication" FunctionName="MuseumModel.Store.GetArtifactAuthentication">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.GetArtifactAuthentication_Result">
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+          <ScalarProperty Name="Authenticated" ColumnName="Authenticated" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetArtifactsInExhibition" FunctionName="MuseumModel.Store.GetArtifactsInExhibition">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.GetArtifactsInExhibition_Result">
+          <ScalarProperty Name="Exhibition" ColumnName="Exhibition" />
+          <ScalarProperty Name="Artifact" ColumnName="Artifact" />
+          <ScalarProperty Name="ArtifactDescriptionSummary" ColumnName="ArtifactDescriptionSummary" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetArtifactsInLocation" FunctionName="MuseumModel.Store.GetArtifactsInLocation" />
+    <FunctionImportMapping FunctionImportName="getSpecificCollection" FunctionName="MuseumModel.Store.getSpecificCollection">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.getSpecificCollection_Result">
+          <ScalarProperty Name="Collection" ColumnName="Collection" />
+          <ScalarProperty Name="Artifact" ColumnName="Artifact" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="GetStorageRequirements" FunctionName="MuseumModel.Store.GetStorageRequirements">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.GetStorageRequirements_Result">
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+          <ScalarProperty Name="Type" ColumnName="Type" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="LoanAnArtifact" FunctionName="MuseumModel.Store.LoanAnArtifact" />
+    <FunctionImportMapping FunctionImportName="ViewArtifactDescription" FunctionName="MuseumModel.Store.ViewArtifactDescription">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="MuseumModel.ViewArtifactDescription_Result">
+          <ScalarProperty Name="ArtifactName" ColumnName="ArtifactName" />
+          <ScalarProperty Name="ArtifactDescriptionSummary" ColumnName="ArtifactDescriptionSummary" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "getArtifact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("ViewArtifactDescription", "Artifact"))
+{
+    @Html.AntiForgeryToken()
+    <h4>Enter the name of an artifact to find its description:</h4>
+    @Html.TextBox("artifactName")
+    <input type="submit" />
+}

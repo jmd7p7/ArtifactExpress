@@ -1,0 +1,21 @@
+{
+    "environmentSettings": {
+        "webSite": {
+            "name": "ArtifactExpress7506",
+            "location": "Central US"
+        },
+        "databases": [
+            {
+                "connectionStringName": "DefaultConnection",
+                "databaseName": "ArtifactExpress7506_db",
+                "serverName": "pboxl1ag8i",
+                "user": "dejl470",
+                "password": "",
+                "edition": "",
+                "size": "",
+                "collation": "",
+                "location": "Central US"
+            }
+        ]
+    }
+}

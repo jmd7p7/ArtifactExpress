@@ -1,0 +1,33 @@
+﻿@model IEnumerable<Artifact_Express.getSpecificCollection_Result>
+
+@{
+    ViewBag.Title = "getSpecificCollection";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Query Result:</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Collection)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Artifact)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Collection)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Artifact)
+        </td>
+    </tr>
+}
+
+</table>

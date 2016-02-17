@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "getExhibitName";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("getArtifactsInExhibition", "Exhibits"))
+{
+    @Html.AntiForgeryToken()
+    <h3>Enter exhibit name to view all artifacts in exhibit:</h3>
+    <label>Exhibit Name: </label>@Html.TextBox("ExhibitionName")
+    <input type="submit" />
+}

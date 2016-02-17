@@ -1,0 +1,14 @@
+﻿@model Artifact_Express.TIMEPERIOD
+
+@{
+    ViewBag.Title = "getTimePeriod";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("ArtifactsFromTimePeriod", "Artifact"))
+{
+    @Html.AntiForgeryToken()
+    <h3>Find all artifacts from specified time period:</h3>
+    @Html.TextBox("timePeriod")
+    <input type="submit" />
+}

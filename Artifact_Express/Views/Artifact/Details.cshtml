@@ -1,0 +1,74 @@
+﻿@model Artifact_Express.ARTIFACT
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ARTIFACT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtifactName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtifactName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ArtifactDescriptionSummary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ArtifactDescriptionSummary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AppraisedValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AppraisedValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.InsuredValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.InsuredValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ARTIFACTTYPE1.Type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ARTIFACTTYPE1.Type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COUNTRY.CountryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COUNTRY.CountryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TIMEPERIOD.TimePeriodName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TIMEPERIOD.TimePeriodName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ArtifactId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

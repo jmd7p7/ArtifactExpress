@@ -1,0 +1,26 @@
+﻿@model IEnumerable<Artifact_Express.Models.ArtifactInLocation>
+
+@{
+    ViewBag.Title = "GetArtifactsInLocation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Artifacts in room @TempData["Room"] on floor @TempData["Floor"]:</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Artifact)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Artifact)
+        </td>
+    </tr>
+}
+
+</table>

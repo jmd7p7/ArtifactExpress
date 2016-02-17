@@ -1,0 +1,32 @@
+﻿@model IEnumerable<Artifact_Express.AppraisedValueGreaterThan_Result>
+
+@{
+    ViewBag.Title = "AppraisedValueGreaterThan";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>The following artifacts were found with an appraised value greater than $@ViewBag.Message</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtifactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppraisedValue)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtifactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppraisedValue)
+        </td>
+    </tr>
+}
+
+</table>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="a0e17ec636434edcb4f1e7b1ad853415" Name="Diagram1">
+        <EntityTypeShape EntityType="MuseumModel.ARTIFACT" Width="1.5" PointX="3" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.ARTIFACTPRESERVATION" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.ARTIFACTTYPE" Width="1.5" PointX="0.75" PointY="2.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.ARTIST" Width="1.5" PointX="0.75" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.BORROWEDLOG" Width="1.5" PointX="9.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.COLLECTION" Width="1.5" PointX="8.25" PointY="7.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.COUNTRY" Width="1.5" PointX="0.75" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.EXHIBIT" Width="1.5" PointX="10.5" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.LOANEDLOG" Width="1.5" PointX="11.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.LOCATION" Width="1.5" PointX="12.75" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.MUSEUM" Width="1.5" PointX="7.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.PHOTOGRAPH" Width="1.5" PointX="0.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.STORAGEREQUIREMENT" Width="1.5" PointX="5.25" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.SysUser" Width="1.5" PointX="9.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.TEST" Width="1.5" PointX="5.25" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.TestTool" Width="1.5" PointX="3" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.TESTUSED" Width="1.5" PointX="7.5" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.TIMEPERIOD" Width="1.5" PointX="0.75" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.TREATMENTREGIMan" Width="1.5" PointX="5.25" PointY="1.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.TREATMENTREGIMENUSED" Width="1.5" PointX="7.5" PointY="1.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.TREATMENTTECHNIQUE" Width="1.5" PointX="10.5" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="MuseumModel.TREATMENTTOOL" Width="1.5" PointX="3" PointY="1.75" IsExpanded="true" />
+        <AssociationConnector Association="MuseumModel.ArtifactType_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.Country_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.OfTimePeriod_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.ArtifactPreservationTestId_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.TreatmentInArtifactPreservationId_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.CollectionCountryOfOrigin_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.CollectionInExhibit" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.CollectionTimePeriod_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.LocationInExhibit" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.TestUsedTestId_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.TreatmentRegimenUsedInTreatmentRegimenId_FK" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.HASARTIST" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.HASPRESERVATION" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.HASSTORAGEREQUIREMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.INCOLLECTION" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.INLOCATION" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.LOCATIONOFEXHIBIT" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.TOOLUSEDINTEST" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.TOOLUSEDINTREATMENT" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.VISUALRECORD" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.TECHNIQUEUSEDINTEST" ManuallyRouted="false" />
+        <AssociationConnector Association="MuseumModel.TECHNIQUEUSEDINTREATMENT" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

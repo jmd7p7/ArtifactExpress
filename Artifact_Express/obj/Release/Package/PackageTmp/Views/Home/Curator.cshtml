@@ -1,0 +1,75 @@
+﻿
+@{
+    ViewBag.Title = "Curator";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@*<h1>Welcome Curator!</h1>*@
+
+@{Html.RenderPartial("Welcome");}
+<div style="border:double;padding:10px;margin-bottom:5px;">
+    <h2><u>Manage Artifacts</u></h2>
+    <div>
+        <span style="font-size:1.5em;">View/Edit/Create Artifacts:
+        @Html.ActionLink("Artifact Index", "Index", "Artifact")</span><br />
+
+    </div>
+    <div>
+        @{Html.RenderPartial("getAppraisedValueGreaterThan");}
+
+    </div>
+    <div id="myDiv">
+        @{Html.RenderPartial("getArtifactForLocation");}
+
+    </div>
+
+    <div id="myDiv">
+        @{Html.RenderPartial("getArtifactForDescription");}
+
+    </div>
+
+</div>
+
+<div style="border:double;padding:10px;margin-bottom:5px;">
+    <h2><u>Manage Collections</u></h2>
+
+    <div>
+        <span style="font-size:1.5em;">
+            View all collections:
+            @Html.ActionLink("Collection Index", "Index", "Collection")
+        </span>
+
+    </div>
+    <div id="myDiv">
+        @{Html.RenderPartial("getCollectionName");}
+
+    </div>
+
+</div>
+
+<div style="border:double;padding:10px;margin-bottom:5px;">
+    <h2><u>Manage Exhibits</u></h2>
+
+    <div>
+        <span style="font-size:1.5em;">
+            View All Exhibits
+            @Html.ActionLink("Exhibit Index", "Index", "Exhibits")
+        <span />
+
+    </div>
+    <div id="myDiv">
+        @{Html.RenderPartial("getExhibitName");}
+
+    </div>
+
+</div>
+
+<div style="border:double;padding:10px;margin-bottom:5px;">
+    <h2><u>Manage Loaned/Borrowed Artifacts</u></h2>
+    <div id="myDiv">
+        @{Html.RenderPartial("getMusuemBorrowedFrom");}
+
+    </div>
+
+</div>
+

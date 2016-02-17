@@ -1,0 +1,69 @@
+﻿@model IEnumerable<Artifact_Express.ARTIFACT>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtifactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtifactDescriptionSummary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AppraisedValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.InsuredValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ARTIFACTTYPE1.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.COUNTRY.CountryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TIMEPERIOD.TimePeriodName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtifactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtifactDescriptionSummary)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AppraisedValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InsuredValue)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ARTIFACTTYPE1.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.COUNTRY.CountryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TIMEPERIOD.TimePeriodName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ArtifactId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ArtifactId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArtifactId })
+        </td>
+    </tr>
+}
+
+</table>

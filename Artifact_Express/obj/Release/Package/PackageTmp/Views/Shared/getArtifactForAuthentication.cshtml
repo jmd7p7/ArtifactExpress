@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "getArtifactName";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("GetArtifactAuthentication", "Conservation"))
+{
+    @Html.AntiForgeryToken()
+    <h3>Enter artifact name to view its authentication status:</h3>
+    <label>Artifact name: </label>@Html.TextBox("artifactName")
+    <input type="submit" />
+}
+

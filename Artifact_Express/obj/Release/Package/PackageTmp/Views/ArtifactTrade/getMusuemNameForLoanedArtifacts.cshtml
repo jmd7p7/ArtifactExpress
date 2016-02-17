@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "getMuseum";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("ArtifactsOnLoan", "ArtifactTrade"))
+{
+    @Html.AntiForgeryToken()
+    <h3>To find all artifacts on loan to a particular museum, enter museum name below:</h3>
+    @Html.TextBox("museumName")
+    <input type="submit" />
+}

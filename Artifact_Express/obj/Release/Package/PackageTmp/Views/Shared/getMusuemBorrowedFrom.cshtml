@@ -1,0 +1,14 @@
+﻿@model Artifact_Express.TIMEPERIOD
+
+@{
+    ViewBag.Title = "getMuseum";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("ArtifactsBorrowed", "Artifact"))
+{
+    @Html.AntiForgeryToken()
+    <h3>Find all artifacts borrowed from specified museum:</h3>
+    @Html.TextBox("museumName")
+    <input type="submit" />
+}

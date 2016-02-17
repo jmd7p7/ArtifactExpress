@@ -1,0 +1,31 @@
+﻿@model IEnumerable<Artifact_Express.GetAllToolsUsedInTest_Result>
+
+@{
+    ViewBag.Title = "GetAllToolsUsedInTest";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Tools used in tests on artifact:</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ArtifactName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ToolName)
+        </th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ArtifactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ToolName)
+        </td>
+    </tr>
+}
+
+</table>

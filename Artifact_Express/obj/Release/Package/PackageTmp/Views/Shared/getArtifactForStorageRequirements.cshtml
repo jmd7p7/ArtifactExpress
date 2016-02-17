@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "getArtifactName";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("getStorageRequirements", "Conservation"))
+{
+    @Html.AntiForgeryToken()
+    <h3>Enter artifact name to view its storage requirements:</h3>
+    <label>Artifact name: </label>@Html.TextBox("artifactName")
+    <input type="submit" />
+}

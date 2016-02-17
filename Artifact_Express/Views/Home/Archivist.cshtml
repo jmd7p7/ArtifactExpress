@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Archivist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h1>Welcome Archivist!</h1>
+<div>
+    <h2><u>Manage Artifacts</u></h2>
+    <div>
+        <h4>View/Edit/Create Artifacts</h4>
+        @Html.ActionLink("Artifact Index", "Index", "Artifact")<br />
+        <hr style="color:black;" />
+    </div>
+    <div>
+        @{Html.RenderPartial("getAppraisedValueGreaterThan");}
+        <hr style="color:black;" />
+    </div>
+    <div id="myDiv">
+        @{Html.RenderPartial("getArtifactForLocation");}
+        <hr style="width:100%; color:black;" size="30" />
+    </div>
+
+    <div id="myDiv">
+        @{Html.RenderPartial("getArtifactForDescription");}
+        <hr style="width:100%; color:black;" size="30" />
+    </div>
+
+</div>
+
+<div>
+    <h2><u>Manage Collections</u></h2>
+
+    <div>
+        <h4>View all collections</h4>
+        @Html.ActionLink("Collection Index", "Index", "Collection")<br />
+        <hr style="color:black;" />
+    </div>
+    <div id="myDiv">
+        @{Html.RenderPartial("getCollectionName");}
+        <hr style="width:100%; color:black;" size="30" />
+    </div>
+
+</div>
+
+<div>
+    <h2><u>Manage Exhibits</u></h2>
+
+    <div>
+        <h4>View all exhibits</h4>
+        @Html.ActionLink("Exhibit Index", "Index", "Exhibits")<br />
+        <hr style="color:black;" />
+    </div>
+    <div id="myDiv">
+        @{Html.RenderPartial("getExhibitName");}
+        <hr style="width:100%; color:black;" size="30" />
+    </div>
+
+</div>
+

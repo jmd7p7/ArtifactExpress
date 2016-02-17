@@ -1,0 +1,13 @@
+﻿@{
+    ViewBag.Title = "getLocation";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("GetArtifactsInLocation", "Artifact"))
+{
+    @Html.AntiForgeryToken()
+    <h3>Find all artifacts in a museum room.  Please enter the floor and room number:</h3>
+    <label>Floor: </label>@Html.TextBox("Floor")
+    <label>Room: </label>@Html.TextBox("Room")
+    <input type="submit" />
+}

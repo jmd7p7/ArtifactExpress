@@ -1,0 +1,36 @@
+﻿@model Artifact_Express.ViewArtifactDescription_Result
+
+@{
+    ViewBag.Title = "ViewArtifactDescription";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Artifact Description:</h2>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Artifact
+        </th>
+        <th>
+            Description Summary
+        </th>
+        <th></th>
+    </tr>
+
+
+
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.ArtifactName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => modelItem.ArtifactDescriptionSummary)
+        </td>
+    </tr>
+
+
+</table>
+

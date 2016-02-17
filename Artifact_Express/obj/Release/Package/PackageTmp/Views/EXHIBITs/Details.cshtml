@@ -1,0 +1,67 @@
+﻿@model Artifact_Express.EXHIBIT
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>EXHIBIT</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ExhibitName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExhibitName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExhibitDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExhibitDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExhibitBeginningDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExhibitBeginningDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ExhibitEndingDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ExhibitEndingDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.COLLECTION.CollectionName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.COLLECTION.CollectionName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LOCATION.StorageOrDisplay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LOCATION.StorageOrDisplay)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ExhibitID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

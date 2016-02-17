@@ -1,0 +1,14 @@
+﻿@model Artifact_Express.ARTIFACT
+
+@{
+    ViewBag.Title = "getArtifact";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using (Html.BeginForm("findArtifactLocation", "Artifact"))
+{
+    @Html.AntiForgeryToken()
+    <h4>Enter the name of an artifact to find its floor and room number:</h4>
+    @Html.TextBox("artifactName")
+    <input type="submit" />
+}
